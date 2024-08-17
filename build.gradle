@@ -1,0 +1,84 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'org.leochen'
+version = '0.0.1.0.0'
+
+repositories {
+    maven {
+        name 'private-maven-public'
+        url "$project.repoUrl"+"$project.mavenCentralPath"
+        credentials {
+            username project.repoUser
+            password project.repoPassword
+        }
+        allowInsecureProtocol = true
+    }
+
+    maven {
+        name 'private-lib'
+        url "$project.repoUrl"+"$project.servicelibPath"
+        credentials {
+            username project.repoUser
+            password project.repoPassword
+        }
+        allowInsecureProtocol = true
+    }
+//    mavenCentral()
+}
+
+dependencies {
+    implementation('io.github.sashirestela:simple-openai:3.5.1'){
+        exclude group: 'org.slf4j'
+    }
+
+    // isEmpty(%) Support
+//    implementation 'io.micrometer:micrometer-core:1.13.3'
+//    implementation 'org.apache.commons:commons-lang3:3.11'
+
+    // sqlite Support
+    implementation 'org.xerial:sqlite-jdbc:3.45.3.0'
+
+    // log
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+//    implementation 'org.slf4j:slf4j-log4j12:2.0.6'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+//发布上传到Nexus私服
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            //如果是war包填写components.web，如果是jar包填写components.java
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = "$project.repoUrl"+"$project.servicelibPath"
+            //认证用户和密码
+            credentials {
+                username project.repoUser
+                password project.repoPassword
+            }
+            allowInsecureProtocol = true
+        }
+    }
+}
