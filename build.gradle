@@ -9,7 +9,7 @@ version = '0.0.1.0.0'
 repositories {
     maven {
         name 'private-maven-public'
-        url "$project.repoUrl"+"$project.mavenCentralPath"
+        url "$project.repoUrl"+"$project.mavenPublicPath"
         credentials {
             username project.repoUser
             password project.repoPassword
@@ -19,7 +19,7 @@ repositories {
 
     maven {
         name 'private-lib'
-        url "$project.repoUrl"+"$project.servicelibPath"
+        url "$project.repoUrl"+"$project.engineeringPath"
         credentials {
             username project.repoUser
             password project.repoPassword
@@ -72,7 +72,7 @@ publishing {
     }
     repositories {
         maven {
-            url = "$project.repoUrl"+"$project.servicelibPath"
+            url = "$project.repoUrl"+"$project.engineeringPath"
             //认证用户和密码
             credentials {
                 username project.repoUser
