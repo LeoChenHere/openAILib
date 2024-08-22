@@ -1,4 +1,4 @@
-package OpenAI.consts;
+package org.leochen.openAI.consts;
 
 public class model {
     public static final String gpt4o = "gpt-4o";

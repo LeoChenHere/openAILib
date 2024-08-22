@@ -1,6 +1,6 @@
-package OpenAI;
+package org.leochen.openAI;
 
-import OpenAI.consts.model;
+import org.leochen.openAI.consts.model;
 import io.github.sashirestela.cleverclient.Event;
 import io.github.sashirestela.openai.SimpleOpenAI;
 import io.github.sashirestela.openai.common.content.ContentPart;

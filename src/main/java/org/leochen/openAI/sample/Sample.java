@@ -1,19 +1,12 @@
-package OpenAI.sample;
+package org.leochen.openAI.sample;
 
-import OpenAI.OpenAIUtil;
+import org.leochen.openAI.OpenAIUtil;
 import io.github.sashirestela.openai.domain.image.Image;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.*;
 import java.util.List;
 
 // test4
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 
 @Slf4j

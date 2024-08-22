@@ -1,4 +1,4 @@
-package OpenAI.structure;
+package org.leochen.openAI.structure;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
