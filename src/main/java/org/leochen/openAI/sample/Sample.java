@@ -1,10 +1,12 @@
 package org.leochen.openAI.sample;
 
+import org.leochen.javaLib.utils.Util;
 import org.leochen.openAI.OpenAIUtil;
 import io.github.sashirestela.openai.domain.image.Image;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Properties;
 
 // test4
 
@@ -12,13 +14,14 @@ import java.util.List;
 @Slf4j
 public class Sample {
 
-    private static String APIKey = "";
-    private static String assistantId = "";
-    private static String threadId = "";
+    private static Properties prop = Util.loadAppProperties();
+    private static String APIKey = prop.getProperty("openAI.APIKey");
+    private static String assistantId = prop.getProperty("openAI.assistantId");
+    private static String threadId = prop.getProperty("openAI.threadId");
     private static OpenAIUtil openAIUtil = new OpenAIUtil(APIKey, assistantId);
 
     public static void main(String[] args) {
-        test1(false);
+        test1(true);
         test2(false);
     }
 
