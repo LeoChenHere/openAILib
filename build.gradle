@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'org.leochen'
-version = '0.0.2.0.0'
+version = '0.0.2.1.0'
 
 repositories {
     maven {
@@ -33,7 +33,7 @@ dependencies {
 
     implementation 'org.leochen:JavaLib:0.0.1.0.0'
 
-    implementation('io.github.sashirestela:simple-openai:3.5.1'){
+    implementation('io.github.sashirestela:simple-openai:3.8.1'){
         exclude group: 'org.slf4j'
     }
 
