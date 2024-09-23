@@ -45,7 +45,7 @@ public class OpenAIUtil {
 
         var assistant = openAI.assistants().getOne(assistantId).join(); // 雖然好像沒用到 assistant 但還是要有這行
         var thread = (isEmpty(threadId)) ? openAI.threads().create().join() : openAI.threads().getOne(threadId).join();
-        log.info("Thread was created with id: " + thread.getId());
+        log.info("Thread id: " + thread.getId());
         threadId = thread.getId(); // 有可能有 threadId, 那就重複賦值；如果是新的 thread 那就透過這層賦值
         this.threadId = threadId; // 给予外层取得 threadId 的方法
 
